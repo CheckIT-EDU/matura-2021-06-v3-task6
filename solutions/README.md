@@ -3,7 +3,8 @@
 Pliki wzorcowe dla trzech ścieżek zgłoszenia. Ścieżki SQL i `.odb` (znormalizowana) zweryfikowane
 lokalnie na `mysql:8` checkerami C++ (ścieżka grade: `--batch --raw --skip-column-names`). Ścieżka
 ACCESS zweryfikowana w postaci **po konwersji** Access→MySQL (wszystkie 5 kwerend zwraca wyniki z
-`tests/task_N/out/1.out`); sam plik `.accdb` czeka na krok Windows — patrz `HOW_TO_CREATE_ACCDB.md`.
+`tests/task_N/out/1.out`), a plik `Koncerty.accdb` zbudowany i wykonany w silniku ACE — patrz
+`HOW_TO_CREATE_ACCDB.md`.
 
 | Plik | Ścieżka | Rola |
 |------|---------|------|
@@ -12,6 +13,7 @@ ACCESS zweryfikowana w postaci **po konwersji** Access→MySQL (wszystkie 5 kwer
 | `make_odb.py` | LibreOffice | Generator `Koncerty.odb` (ODF zip, 5 zapisanych kwerend w ANSI SQL). `python3 make_odb.py`. |
 | `Koncerty.odb` | LibreOffice | Wygenerowany wzorzec `.odb` (nazwy kwerend = `accessQueryName`). Zweryfikowany: normalizacja `"ident"`→backtick → 11/11. |
 | `HOW_TO_CREATE_ACCDB.md` | Access | Przepis na `Koncerty.accdb` (Windows-only). |
+| `Koncerty.accdb` | Access | Wzorzec `.accdb` (3 tabele + 5 zapisanych kwerend = `accessQueryName`). Wykonany w ACE → wyniki jak w `tests/`. |
 
 ## Mapowanie kwerend (ścieżki upload)
 
@@ -53,6 +55,8 @@ ACCESS zweryfikowana w postaci **po konwersji** Access→MySQL (wszystkie 5 kwer
 - **Bez `Count(DISTINCT)`:** 6.2/6.3 używają tabel pochodnych z `SELECT DISTINCT` / podzapytań
   skorelowanych (Jet/ACE nie ma `COUNT(DISTINCT)`).
 - **Aliasy:** `ORDER BY`/`HAVING` powtarzają wyrażenie zamiast odwoływać się do aliasu `SELECT`.
+- **Nawiasy w JOIN (6.2):** ACE wymaga `FROM (a JOIN b ON …) JOIN c ON …` przy 3 źródłach; bez
+  nawiasów kwerenda się nie zapisze („brak operatora"). W MySQL nawiasy są neutralne.
 
 ## Weryfikacja lokalna (skrót)
 

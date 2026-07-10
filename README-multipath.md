@@ -57,10 +57,11 @@ na `mysql:8` przez checkery C++ (ścieżka grade: `--batch --raw --skip-column-n
 | 6.4 | 2 | 2/2 | 2/2 | 2/2 | 10 zespołów |
 | 6.5 | 3 | 3/3 | 3/3 | 3/3 | 3 zespoły |
 
-Częściowa odpowiedź (`solutions/partial.sql`) → **5/11** (1 + 1 + 1 + 1 + 1). Plik `Koncerty.accdb`
-(Windows-only, patrz `solutions/HOW_TO_CREATE_ACCDB.md`) trzeba jeszcze utworzyć ręcznie — do tego
-czasu run ACCESS na stagingu robi fallback do SQL; kwerendy wzorcowe są gotowe i zweryfikowane w
-postaci po konwersji na MySQL.
+Częściowa odpowiedź (`solutions/partial.sql`) → **5/11** (1 + 1 + 1 + 1 + 1). Plik
+`solutions/Koncerty.accdb` jest już zbudowany (Windows/DAO, patrz `solutions/HOW_TO_CREATE_ACCDB.md`):
+3 tabele z danymi + 5 zapisanych kwerend, każda wykonana w ACE z wynikami zgodnymi z `tests/`.
+Ponieważ wcześniej run ACCESS na stagingu robił fallback do SQL, e2e ścieżki ACCESS należy
+**powtórzyć** na tym pliku.
 
 ## Rubryki checkerów (naprawione względem starego portu `matura-2021-06-task6`)
 

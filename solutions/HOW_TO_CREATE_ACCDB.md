@@ -74,6 +74,11 @@ Reguły dialektu (wszystkie zweryfikowane po konwersji Access→MySQL na `mysql:
 >
 > **Bez aliasów z `SELECT` w `ORDER BY`/`HAVING`:** silnik ACE **nie rozwiązuje** aliasów kolumn,
 > dlatego 6.3 powtarza wyrażenie `Round(...)` w `ORDER BY`, a 6.5 powtarza agregaty w `HAVING`.
+>
+> **Nawiasy przy złączeniu 3+ źródeł (6.2).** ACE wymaga jawnego nawiasowania łańcucha `JOIN`:
+> `FROM a INNER JOIN b ON … INNER JOIN c ON …` kończy się błędem *„Błąd składniowy (brak operatora)
+> w wyrażeniu kwerendy"*. Trzeba pisać `FROM (a INNER JOIN b ON …) INNER JOIN c ON …` — dokładnie tak
+> generuje projektant Accessa. Nawiasy są poprawnym MySQL, więc konwerter workera je przełyka.
 
 ### Podzadanie 1 — `qryKoncertyLipiec`
 ```sql
@@ -86,8 +91,8 @@ Wynik: `122`.
 ### Podzadanie 2 — `qryMiastoNajwiecejArtystow`
 ```sql
 SELECT miasta.miasto
-FROM (SELECT DISTINCT koncerty.kod_miasta, koncerty.id_zespolu FROM koncerty) AS d
-INNER JOIN miasta ON miasta.kod_miasta = d.kod_miasta
+FROM ((SELECT DISTINCT koncerty.kod_miasta, koncerty.id_zespolu FROM koncerty) AS d
+INNER JOIN miasta ON miasta.kod_miasta = d.kod_miasta)
 INNER JOIN zespoly ON zespoly.id_zespolu = d.id_zespolu
 GROUP BY miasta.kod_miasta, miasta.miasto
 HAVING Sum(zespoly.liczba_artystow) =
@@ -142,10 +147,18 @@ Wynik (3): Powolne fortepiany 5/4, Wiosenne bebny 4/3, Niebieskie kontrabasy 4/1
 1. Zapisz bazę. Sprawdź w panelu nawigacji, że widać **5 kwerend** o nazwach dokładnie jak wyżej.
 2. Prześlij plik do repozytorium jako `solutions/Koncerty.accdb`.
 
-> **Status:** `solutions/Koncerty.accdb` **jeszcze nie istnieje** (krok Windows-only). Wszystkie 5
-> kwerend zostało jednak zweryfikowanych w postaci **po konwersji** Access→MySQL na `mysql:8` przez
-> checkery C++ (6.1=122, 6.2=2 miasta, 6.3=16 województw, 6.4=10 zespołów, 6.5=3 zespoły). Kwerenda
-> 6.5 dowodzi reguły `Weekday(x)` → `DAYOFWEEK(x)` workera.
+> **Status:** `solutions/Koncerty.accdb` **istnieje** — zbudowany na Windowsie przez DAO
+> (`DAO.DBEngine.120`, format 128 = Access 2007+): 3 tabele z kompletem danych z `tables/*.tsv`
+> (23 + 49 + 240 wierszy) i 5 zapisanych kwerend o nazwach z `task_definition.yml`. Każda kwerenda
+> została **wykonana** w ACE (`OpenRecordset`), nie tylko zapisana; wyniki zgadzają się z
+> `tests/task_N/out/1.out` (6.1=122, 6.2=Grudziadz + Piotrkow Trybunalski, 6.3=16 województw,
+> 6.4=10 zespołów, 6.5=3 zespoły). Wcześniej te same kwerendy zweryfikowano w postaci **po konwersji**
+> Access→MySQL na `mysql:8` przez checkery C++; 6.5 dowodzi reguły `Weekday(x)` → `DAYOFWEEK(x)`.
+>
+> Uwaga: w 6.2 SQL podany wcześniej w tej instrukcji **nie kompilował się** w ACE (JOIN 3 źródeł bez
+> nawiasów → „brak operatora"). Poprawione powyżej; sam alias nie wystarczy, wymagane są nawiasy.
+> Kolejność wierszy przy remisach w 6.3 (`lodzkie`/`opolskie` itd.) jest dowolna — `checker3`
+> sprawdza jedynie nierosnący porządek wartości.
 
 ---
 
