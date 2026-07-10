@@ -1,0 +1,7 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Binarne pliki baz - bez normalizacji koncow linii
+*.accdb binary
+*.mdb binary
+*.odb binary

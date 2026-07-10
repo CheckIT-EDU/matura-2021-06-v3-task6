@@ -1,0 +1,20 @@
+services:
+  db:
+    image: mysql:8
+    command: --local-infile=1
+    network_mode: "none"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: testdb
+      MYSQL_USER: user
+      MYSQL_PASSWORD: pass
+      SUBTASK: playground
+    volumes:
+      - ./schema:/data/schema:ro
+      - ./tables:/data/tables:ro
+      - ./src:/data/src
+      - ./output:/data/output
+      - ./scripts/init.sh:/docker-entrypoint-initdb.d/01-init.sh:ro
+      - ./scripts/run_subtask.sh:/docker-entrypoint-initdb.d/02-run_subtask.sh:ro
+      - ./my.cnf:/etc/mysql/conf.d/custom.cnf:ro
+    restart: "no"

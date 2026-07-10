@@ -1,0 +1,103 @@
+# Multi-path DATABASE task — Matura czerwiec 2021 v3 (termin dodatkowy), zad 6.1–6.5 („Koncerty").
+#
+# The task can be solved THREE interchangeable ways within ONE repository:
+#   * SQL         — the student writes MySQL directly in the editor;
+#   * ACCESS      — the student uploads a Microsoft Access file (.accdb/.mdb) whose saved queries
+#                   the worker extracts with Jackcess;
+#   * LIBREOFFICE — the student uploads a LibreOffice Base file (.odb) whose saved queries the
+#                   worker extracts from content.xml (ZIP + XML, no library).
+#
+# In all three cases the saved queries are extracted DETERMINISTICALLY (no LLM), normalized to
+# MySQL, placed into the `-- task_N BEGIN/END` sections, and graded by the SAME pipeline — the
+# C++ checkers, which work unchanged because they only see the final result rows.
+#
+# ACCESS/LIBREOFFICE = ONE named query = ONE SELECT per subtask, so every subtask is authored as a
+# single portable SELECT. 6.5 splits concerts into weekends/weekdays: the MySQL/.odb paths use
+# DAYOFWEEK(data) IN (1,7); the ACCESS path uses Weekday([data]) IN (1,7) (Access numbers 1=Sunday …
+# 7=Saturday), which the worker's AccessDialectConverter.rewriteWeekday() rewrites to DAYOFWEEK — the
+# same 1=Sunday base, so it is row-equivalent. Weekend/weekday tallies use SUM(CASE WHEN …) on the
+# MySQL/.odb paths and Sum(Abs(cond)) on the ACCESS path (IIf is fail-closed by the converter). See
+# solutions/HOW_TO_CREATE_ACCDB.md.
+sourceFile: src/query.sql
+
+# Allowed submission "languages" the student picks from.
+languages: [SQL, ACCESS, LIBREOFFICE]
+
+limits:
+  time: 30000
+  memory: 512000
+
+tasks:
+  task_1:
+    testedFunctionName: task_1
+    userInputFilename: null
+    userOutputFilename: result.csv
+    maxPoints: 1
+    checkerFilename: "checkers/checker1.cpp"
+    # Name of the saved query that answers this subtask in an uploaded database file. Used by the
+    # file-upload paths only: the worker extracts this query's SQL (ACCESS: Jackcess from .accdb;
+    # LIBREOFFICE: db:command from .odb), normalizes the dialect to MySQL, and places it in the
+    # `-- task_1 BEGIN/END` section. Ignored by the SQL path. The .accdb and .odb use the SAME query
+    # names, so one name serves both upload paths.
+    accessQueryName: qryKoncertyLipiec
+    libreOfficeQueryName: qryKoncertyLipiec
+    checkTypes:
+      OFFICIAL:
+        inputFilesDirectory: null
+        outputFilesDirectory: tests/task_1/out/
+  task_2:
+    testedFunctionName: task_2
+    userInputFilename: null
+    userOutputFilename: result.csv
+    maxPoints: 2
+    checkerFilename: "checkers/checker2.cpp"
+    accessQueryName: qryMiastoNajwiecejArtystow
+    libreOfficeQueryName: qryMiastoNajwiecejArtystow
+    checkTypes:
+      OFFICIAL:
+        inputFilesDirectory: null
+        outputFilesDirectory: tests/task_2/out/
+  task_3:
+    testedFunctionName: task_3
+    userInputFilename: null
+    userOutputFilename: result.csv
+    maxPoints: 3
+    checkerFilename: "checkers/checker3.cpp"
+    accessQueryName: qrySredniaKoncertowWojewodztwo
+    libreOfficeQueryName: qrySredniaKoncertowWojewodztwo
+    checkTypes:
+      OFFICIAL:
+        inputFilesDirectory: null
+        outputFilesDirectory: tests/task_3/out/
+  task_4:
+    testedFunctionName: task_4
+    userInputFilename: null
+    userOutputFilename: result.csv
+    maxPoints: 2
+    checkerFilename: "checkers/checker4.cpp"
+    accessQueryName: qryZespolyBezKoncertow
+    libreOfficeQueryName: qryZespolyBezKoncertow
+    checkTypes:
+      OFFICIAL:
+        inputFilesDirectory: null
+        outputFilesDirectory: tests/task_4/out/
+  task_5:
+    testedFunctionName: task_5
+    userInputFilename: null
+    userOutputFilename: result.csv
+    maxPoints: 3
+    checkerFilename: "checkers/checker5.cpp"
+    accessQueryName: qryZespolyWeekendy
+    libreOfficeQueryName: qryZespolyWeekendy
+    checkTypes:
+      OFFICIAL:
+        inputFilesDirectory: null
+        outputFilesDirectory: tests/task_5/out/
+
+metadata:
+  title: "Koncerty"
+  source:
+    edition: "2021-06"
+    variant: "v3"
+    label: "Matura — czerwiec 2021 (termin dodatkowy)"
+    originalTaskNumber: 6

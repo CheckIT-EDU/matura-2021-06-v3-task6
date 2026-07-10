@@ -1,0 +1,3 @@
+output/query_error.log
+src/active-query.sql
+src/result.csv
