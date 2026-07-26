@@ -12,17 +12,17 @@ if [[ ! -f "$INPUT" ]]; then
 fi
 
 # verify markers existed at all (so student cannot delete them)
-if ! grep -q -- "-- $SUBTASK BEGIN" "$INPUT"; then
+if ! grep -qE "^-- $SUBTASK BEGIN[[:space:]]*$" "$INPUT"; then
   echo "ERROR: missing '-- $SUBTASK BEGIN' marker" >&2
   exit 101
 fi
-if ! grep -q -- "-- $SUBTASK END" "$INPUT"; then
+if ! grep -qE "^-- $SUBTASK END[[:space:]]*$" "$INPUT"; then
   echo "ERROR: missing '-- $SUBTASK END' marker" >&2
   exit 102
 fi
 
 # extract only requested block into $EXTRACT
-sed -n "/-- $SUBTASK BEGIN/,/-- $SUBTASK END/p" "$INPUT" \
+sed -n "/^-- $SUBTASK BEGIN[[:space:]]*$/,/^-- $SUBTASK END[[:space:]]*$/p" "$INPUT" \
 | sed '1d;$d' \
 > "$EXTRACT"
 
