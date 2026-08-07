@@ -101,3 +101,41 @@ metadata:
     variant: "v3"
     label: "Matura — czerwiec 2021 (termin dodatkowy)"
     originalTaskNumber: 6
+  skills:
+    # 6.1 — ile koncertów odbyło się w lipcu.
+    - skillId: SKILL_SQL_AGREGACJA
+      subtaskNumber: 1
+      weight: 0.6
+    - skillId: SKILL_SQL_SELECT
+      subtaskNumber: 1
+      weight: 0.4
+    # 6.2 — miasto z największą liczbą artystów, licząc każdego RAZ, choćby zespół grał tam
+    # kilka razy: sumowanie po RÓŻNYCH zespołach w mieście.
+    - skillId: SKILL_SQL_AGREGACJA
+      subtaskNumber: 2
+      weight: 0.6
+    - skillId: SKILL_SQL_JOIN
+      subtaskNumber: 2
+      weight: 0.4
+    # 6.3 — średnia liczba koncertów na jedno miasto w każdym województwie, posortowana.
+    - skillId: SKILL_SQL_AGREGACJA
+      subtaskNumber: 3
+      weight: 0.7
+    - skillId: SKILL_SQL_JOIN
+      subtaskNumber: 3
+      weight: 0.3
+    # 6.4 — zespoły, które NIE koncertowały w podanym tygodniu: warunek negatywny na podzbiorze.
+    - skillId: SKILL_SQL_JOIN
+      subtaskNumber: 4
+      weight: 0.7
+    - skillId: SKILL_SQL_SELECT
+      subtaskNumber: 4
+      weight: 0.3
+    # 6.5 — zespoły grające częściej w weekendy niż w dni powszednie, z obiema liczbami:
+    # dwa zliczenia warunkowe w tej samej grupie i porównanie ich ze sobą.
+    - skillId: SKILL_SQL_AGREGACJA
+      subtaskNumber: 5
+      weight: 0.6
+    - skillId: SKILL_SQL_JOIN
+      subtaskNumber: 5
+      weight: 0.4
