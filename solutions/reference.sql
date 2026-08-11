@@ -8,6 +8,12 @@
 -- and carry the SAME logic as the .odb/.accdb saved queries (see make_odb.py /
 -- HOW_TO_CREATE_ACCDB.md), so all three paths share one golden set.
 
+-- Miejsce na zapytania pomocnicze — NIE jest oceniane.
+-- playground BEGIN
+
+-- playground END
+
+
 -- task_1 BEGIN
 -- 6.1 How many concerts took place in July? Answer: 122.
 SELECT COUNT(*) AS liczba
@@ -75,8 +81,3 @@ GROUP BY z.id_zespolu, z.nazwa
 HAVING SUM(CASE WHEN DAYOFWEEK(k.data) IN (1, 7) THEN 1 ELSE 0 END)
      > SUM(CASE WHEN DAYOFWEEK(k.data) IN (1, 7) THEN 0 ELSE 1 END);
 -- task_5 END
-
-
--- playground BEGIN
-SELECT 1;
--- playground END

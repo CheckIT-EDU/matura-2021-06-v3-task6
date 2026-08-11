@@ -4,6 +4,12 @@
 --                  koncerty(id, id_zespolu, kod_miasta, data).
 -- Nie usuwaj linii ze znacznikami `-- task_N BEGIN` / `-- task_N END`.
 
+-- Miejsce na zapytania pomocnicze — NIE jest oceniane.
+-- playground BEGIN
+
+-- playground END
+
+
 -- task_1 BEGIN
 -- Podzadanie 1: ile koncertów odbyło się w lipcu?
 -- task_1 END
@@ -30,8 +36,3 @@
 -- Podzadanie 5: nazwy zespołów grających częściej w weekendy niż w dni powszednie;
 -- dla każdego liczba koncertów w weekendy oraz liczba koncertów w dni powszednie.
 -- task_5 END
-
-
--- playground BEGIN
-SELECT 1;
--- playground END
