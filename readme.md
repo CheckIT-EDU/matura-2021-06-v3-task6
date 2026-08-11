@@ -51,6 +51,13 @@ Podaj nazwę miasta, w którym wystąpiło łącznie najwięcej artystów (wykon
 
 Wykonaj zestawienie, w którym dla każdego województwa podasz średnią liczbę koncertów w przeliczeniu na jedno miasto w tym województwie. Wyniki podaj w zaokrągleniu do dwóch miejsc po przecinku i posortuj od najwyższej do najniższej średniej.
 
+Kolejność kolumn w wyniku: **nazwa województwa, średnia liczba koncertów**. Przykład poprawnie sformatowanej (ale **błędnej**) odpowiedzi:
+
+```text
+podlaskie	3.50
+```
+
+
 ## Podzadanie 4 (0–2)
 
 Podaj nazwy zespołów, które nie koncertowały w okresie od 20 lipca do 25 lipca 2017 roku włącznie.
@@ -58,3 +65,10 @@ Podaj nazwy zespołów, które nie koncertowały w okresie od 20 lipca do 25 lip
 ## Podzadanie 5 (0–3)
 
 Podaj nazwy zespołów, które częściej koncertowały w weekendy (sobota, niedziela) niż w dni powszednie (od poniedziałku do piątku). Dla każdego z tych zespołów podaj liczbę koncertów w weekendy oraz liczbę koncertów w dni powszednie.
+
+Kolejność kolumn w wyniku: **nazwa zespołu, liczba koncertów w weekendy, liczba koncertów w dni powszednie**. Przykład poprawnie sformatowanej (ale **błędnej**) odpowiedzi:
+
+```text
+Cicha perkusja	6	2
+```
+
