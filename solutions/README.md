@@ -65,3 +65,22 @@ ROWS`, TAB), wykonaj każdą sekcję `-- task_N BEGIN/END` z `reference.sql` w t
 `--batch --raw --skip-column-names` → `result.csv`, skompiluj `checkers/checkerN.cpp`
 (`g++ -O2 -std=c++17`) i uruchom `checkerN <wejście> result.csv tests/task_N/out/1.out
 checker_output.txt` (wejście = `/dev/null`). Pierwszy token `checker_output.txt` = `16 + punkty`.
+
+<!-- data-dir BEGIN -->
+## Pliki do pobrania (`data/`)
+
+`data/` jest JEDYNYM katalogiem, który platforma udostępnia uczniowi
+(`GET /api/v1/templates/{id}/data-files` → sekcja **Materiały** pod treścią). Bez niego
+zadeklarowane ścieżki ACCESS i LIBREOFFICE są niewybieralne.
+
+Pliki są **kopią `tables/*.tsv`**, czyli dokładnie tego, czym ładowana jest baza i czym
+oceniamy — a nie kopią załącznika CKE tam, gdzie te dwa się różnią. Uczeń, który rozwiąże
+zadanie w Accessie na oryginale CKE, policzyłby na innych danych niż nasz klucz.
+
+| plik | tabela | oryginał CKE | rozjazd |
+|---|---|---|---|
+| `koncerty.txt` | `koncerty` | `koncerty.txt` | CKE rozdziela kolumny średnikiem, nasza tabela tabulatorem |
+| `miasta.txt` | `miasta` | `miasta.txt` | CKE rozdziela kolumny średnikiem, nasza tabela tabulatorem |
+| `zespoly.txt` | `zespoly` | `zespoly.txt` | CKE rozdziela kolumny średnikiem, nasza tabela tabulatorem |
+
+<!-- data-dir END -->
