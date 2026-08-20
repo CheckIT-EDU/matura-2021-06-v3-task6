@@ -19,11 +19,11 @@ ACCESS zweryfikowana w postaci **po konwersji** Access→MySQL (wszystkie 5 kwer
 
 | Podzadanie | Nazwa kwerendy | maxPoints |
 |------------|----------------|-----------|
-| 6.1 | `qryKoncertyLipiec` | 1 |
-| 6.2 | `qryMiastoNajwiecejArtystow` | 2 |
-| 6.3 | `qrySredniaKoncertowWojewodztwo` | 3 |
-| 6.4 | `qryZespolyBezKoncertow` | 2 |
-| 6.5 | `qryZespolyWeekendy` | 3 |
+| 6.1 | `task_1` | 1 |
+| 6.2 | `task_2` | 2 |
+| 6.3 | `task_3` | 3 |
+| 6.4 | `task_4` | 2 |
+| 6.5 | `task_5` | 3 |
 
 ## Wyniki wzorcowe (na dostarczonych danych)
 

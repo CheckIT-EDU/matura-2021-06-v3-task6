@@ -26,12 +26,12 @@ from xml.sax.saxutils import quoteattr
 # saved query name (== accessQueryName in task_definition.yml) -> ANSI SQL command.
 QUERIES = {
     # 6.1 — number of concerts in July.
-    "qryKoncertyLipiec": (
+    "task_1": (
         'SELECT COUNT(*) AS "liczba" FROM "koncerty" '
         'WHERE MONTH("koncerty"."data") = 7'
     ),
     # 6.2 — city (or cities) with the largest total number of artists (each band counted once per city).
-    "qryMiastoNajwiecejArtystow": (
+    "task_2": (
         'SELECT "m"."miasto" '
         'FROM (SELECT DISTINCT "kod_miasta", "id_zespolu" FROM "koncerty") "d" '
         'INNER JOIN "miasta" "m" ON "m"."kod_miasta" = "d"."kod_miasta" '
@@ -45,7 +45,7 @@ QUERIES = {
         'GROUP BY "d2"."kod_miasta") "t")'
     ),
     # 6.3 — for each voivodeship, average concerts per city, rounded to 2 decimals, sorted descending.
-    "qrySredniaKoncertowWojewodztwo": (
+    "task_3": (
         'SELECT "m"."wojewodztwo", '
         'ROUND(COUNT("k"."id") / COUNT(DISTINCT "m"."kod_miasta"), 2) AS "srednia" '
         'FROM "miasta" "m" '
@@ -54,14 +54,14 @@ QUERIES = {
         'ORDER BY ROUND(COUNT("k"."id") / COUNT(DISTINCT "m"."kod_miasta"), 2) DESC'
     ),
     # 6.4 — bands that did NOT play any concert between 20 and 25 July 2017 inclusive.
-    "qryZespolyBezKoncertow": (
+    "task_4": (
         'SELECT "z"."nazwa" FROM "zespoly" "z" '
         'WHERE "z"."id_zespolu" NOT IN ('
         'SELECT "k"."id_zespolu" FROM "koncerty" "k" '
         'WHERE "k"."data" BETWEEN \'2017-07-20\' AND \'2017-07-25\')'
     ),
     # 6.5 — bands playing more often on weekends than weekdays; name, weekend count, weekday count.
-    "qryZespolyWeekendy": (
+    "task_5": (
         'SELECT "z"."nazwa", '
         'SUM(CASE WHEN DAYOFWEEK("k"."data") IN (1, 7) THEN 1 ELSE 0 END) AS "weekendy", '
         'SUM(CASE WHEN DAYOFWEEK("k"."data") IN (1, 7) THEN 0 ELSE 1 END) AS "dni_powszednie" '

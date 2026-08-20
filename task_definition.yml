@@ -34,13 +34,6 @@ tasks:
     userOutputFilename: result.csv
     maxPoints: 1
     checkerFilename: "checkers/checker1.cpp"
-    # Name of the saved query that answers this subtask in an uploaded database file. Used by the
-    # file-upload paths only: the worker extracts this query's SQL (ACCESS: Jackcess from .accdb;
-    # LIBREOFFICE: db:command from .odb), normalizes the dialect to MySQL, and places it in the
-    # `-- task_1 BEGIN/END` section. Ignored by the SQL path. The .accdb and .odb use the SAME query
-    # names, so one name serves both upload paths.
-    accessQueryName: qryKoncertyLipiec
-    libreOfficeQueryName: qryKoncertyLipiec
     checkTypes:
       OFFICIAL:
         inputFilesDirectory: null
@@ -51,8 +44,6 @@ tasks:
     userOutputFilename: result.csv
     maxPoints: 2
     checkerFilename: "checkers/checker2.cpp"
-    accessQueryName: qryMiastoNajwiecejArtystow
-    libreOfficeQueryName: qryMiastoNajwiecejArtystow
     checkTypes:
       OFFICIAL:
         inputFilesDirectory: null
@@ -63,8 +54,6 @@ tasks:
     userOutputFilename: result.csv
     maxPoints: 3
     checkerFilename: "checkers/checker3.cpp"
-    accessQueryName: qrySredniaKoncertowWojewodztwo
-    libreOfficeQueryName: qrySredniaKoncertowWojewodztwo
     checkTypes:
       OFFICIAL:
         inputFilesDirectory: null
@@ -75,8 +64,6 @@ tasks:
     userOutputFilename: result.csv
     maxPoints: 2
     checkerFilename: "checkers/checker4.cpp"
-    accessQueryName: qryZespolyBezKoncertow
-    libreOfficeQueryName: qryZespolyBezKoncertow
     checkTypes:
       OFFICIAL:
         inputFilesDirectory: null
@@ -87,8 +74,6 @@ tasks:
     userOutputFilename: result.csv
     maxPoints: 3
     checkerFilename: "checkers/checker5.cpp"
-    accessQueryName: qryZespolyWeekendy
-    libreOfficeQueryName: qryZespolyWeekendy
     checkTypes:
       OFFICIAL:
         inputFilesDirectory: null

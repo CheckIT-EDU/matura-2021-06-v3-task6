@@ -80,7 +80,7 @@ Reguły dialektu (wszystkie zweryfikowane po konwersji Access→MySQL na `mysql:
 > w wyrażeniu kwerendy"*. Trzeba pisać `FROM (a INNER JOIN b ON …) INNER JOIN c ON …` — dokładnie tak
 > generuje projektant Accessa. Nawiasy są poprawnym MySQL, więc konwerter workera je przełyka.
 
-### Podzadanie 1 — `qryKoncertyLipiec`
+### Podzadanie 1 — `task_1`
 ```sql
 SELECT Count(*) AS liczba
 FROM koncerty
@@ -88,7 +88,7 @@ WHERE Month(koncerty.data) = 7;
 ```
 Wynik: `122`.
 
-### Podzadanie 2 — `qryMiastoNajwiecejArtystow`
+### Podzadanie 2 — `task_2`
 ```sql
 SELECT miasta.miasto
 FROM ((SELECT DISTINCT koncerty.kod_miasta, koncerty.id_zespolu FROM koncerty) AS d
@@ -104,7 +104,7 @@ HAVING Sum(zespoly.liczba_artystow) =
 ```
 Wynik (2): `Grudziadz`, `Piotrkow Trybunalski` (po 71 artystów).
 
-### Podzadanie 3 — `qrySredniaKoncertowWojewodztwo`
+### Podzadanie 3 — `task_3`
 ```sql
 SELECT c.wojewodztwo, Round(Sum(c.lk) / Count(*), 2) AS srednia
 FROM (SELECT miasta.kod_miasta, miasta.wojewodztwo,
@@ -116,7 +116,7 @@ ORDER BY Round(Sum(c.lk) / Count(*), 2) DESC;
 Wynik (16 województw): `swietokrzyskie 8,00` … `pomorskie 2,67` (średnia po **wszystkich** miastach
 województwa; wszystkie 49 miast mają ≥1 koncert).
 
-### Podzadanie 4 — `qryZespolyBezKoncertow`
+### Podzadanie 4 — `task_4`
 ```sql
 SELECT zespoly.nazwa
 FROM zespoly
@@ -128,7 +128,7 @@ WHERE zespoly.id_zespolu NOT IN
 Wynik (10): Male nutki, Stare mandoliny, Wiosenne bebny, Powolne fortepiany, Ciche organy,
 Fajne trojkaty, Rozstrojone pianina, Metalowe klarnety, Zlote saksofony, Piszczace trabki.
 
-### Podzadanie 5 — `qryZespolyWeekendy`
+### Podzadanie 5 — `task_5`
 ```sql
 SELECT zespoly.nazwa,
        Sum(Abs(Weekday(koncerty.data) In (1,7))) AS weekendy,

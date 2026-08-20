@@ -67,7 +67,7 @@ Odpowiedź do każdego podzadania to **jedno zapytanie**:
 
 Ile koncertów odbyło się w lipcu?
 
-Nazwa kwerendy w przesyłanym pliku: `qryKoncertyLipiec`.
+Nazwa kwerendy w przesyłanym pliku: `task_1`.
 
 ## Podzadanie 2. (0–2)
 
@@ -76,7 +76,7 @@ w których wystąpiła największa liczba artystów jest więcej niż jedno, **p
 
 **Uwaga:** artystę, który w danym mieście wystąpił ze swoim zespołem kilkakrotnie, liczymy tylko raz.
 
-Nazwa kwerendy w przesyłanym pliku: `qryMiastoNajwiecejArtystow`.
+Nazwa kwerendy w przesyłanym pliku: `task_2`.
 
 ## Podzadanie 3. (0–3)
 
@@ -91,13 +91,13 @@ sformatowanej (ale **błędnej**) odpowiedzi:
 podlaskie	3.50
 ```
 
-Nazwa kwerendy w przesyłanym pliku: `qrySredniaKoncertowWojewodztwo`.
+Nazwa kwerendy w przesyłanym pliku: `task_3`.
 
 ## Podzadanie 4. (0–2)
 
 Podaj nazwy zespołów, które nie koncertowały w okresie od 20 lipca do 25 lipca włącznie.
 
-Nazwa kwerendy w przesyłanym pliku: `qryZespolyBezKoncertow`.
+Nazwa kwerendy w przesyłanym pliku: `task_4`.
 
 ## Podzadanie 5. (0–3)
 
@@ -112,4 +112,4 @@ powszednie**. Przykład poprawnie sformatowanej (ale **błędnej**) odpowiedzi:
 Cicha perkusja	6	2
 ```
 
-Nazwa kwerendy w przesyłanym pliku: `qryZespolyWeekendy`.
+Nazwa kwerendy w przesyłanym pliku: `task_5`.
