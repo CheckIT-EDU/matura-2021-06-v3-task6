@@ -7,7 +7,7 @@ kwerendy **deterministycznie (bez LLM)** i ocenia tym samym potokiem `mysql:8` +
 
 ## Układ repo
 ```
-task_definition.yml          # languages: [SQL, ACCESS, LIBREOFFICE] + access/libreOfficeQueryName (6.1–6.5)
+task_definition.yml          # languages: [SQL, ACCESS, LIBREOFFICE] + klucze podzadań task_1..task_5
 schema/ tables/              # schemat (zespoly, miasta, koncerty) + dane (23 + 49 + 240 wierszy)
 scripts/init.sh              # ładowanie schematu/danych (tables/*.tsv, IGNORE 1 ROWS, TAB)
 scripts/run_subtask.sh       # wykonanie kwerendy → result.csv (gałąź RUN_DISPLAY = nazwy kolumn na „Uruchom")
@@ -18,8 +18,9 @@ solutions/partial.sql        # wzorzec częściowy (5/11) do e2e partial-credit
 solutions/Koncerty.odb + make_odb.py   # wzorzec LIBREOFFICE (format otwarty, odtwarzalny; 5 kwerend)
 solutions/HOW_TO_CREATE_ACCDB.md       # przepis na wzorzec ACCESS (Windows-only)
 ```
-> Mapowanie kwerenda→podzadanie: `accessQueryName` / `libreOfficeQueryName` (identyczne, jedna nazwa
-> obsługuje oba uploady). Ekstrakcja: Access via Jackcess, `.odb` via zip+XML (XXE-hardened).
+> Mapowanie kwerenda→podzadanie: kwerenda nazywa się tak, jak KLUCZ PODZADANIA
+> (`task_1` … `task_5`); jedna nazwa obsługuje oba uploady.
+> Ekstrakcja: Access via Jackcess, `.odb` via zip+XML (XXE-hardened).
 
 ## Uwagi o danych
 

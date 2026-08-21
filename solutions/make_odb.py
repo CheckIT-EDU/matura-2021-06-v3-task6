@@ -23,7 +23,7 @@ import os
 import zipfile
 from xml.sax.saxutils import quoteattr
 
-# saved query name (== accessQueryName in task_definition.yml) -> ANSI SQL command.
+# saved query name (== the SUBTASK KEY in task_definition.yml) -> ANSI SQL command.
 QUERIES = {
     # 6.1 — number of concerts in July.
     "task_1": (

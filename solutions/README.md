@@ -11,9 +11,9 @@ ACCESS zweryfikowana w postaci **po konwersji** Access→MySQL (wszystkie 5 kwer
 | `reference.sql` | SQL | Wzorzec pełny — 1 + 2 + 3 + 2 + 3 = **11/11**. |
 | `partial.sql` | SQL | Wzorzec częściowy — 1 + 1 + 1 + 1 + 1 = **5/11** (do e2e partial-credit). |
 | `make_odb.py` | LibreOffice | Generator `Koncerty.odb` (ODF zip, 5 zapisanych kwerend w ANSI SQL). `python3 make_odb.py`. |
-| `Koncerty.odb` | LibreOffice | Wygenerowany wzorzec `.odb` (nazwy kwerend = `accessQueryName`). Zweryfikowany: normalizacja `"ident"`→backtick → 11/11. |
+| `Koncerty.odb` | LibreOffice | Wygenerowany wzorzec `.odb` (nazwy kwerend = klucze podzadań `task_1` … `task_5`). Zweryfikowany: normalizacja `"ident"`→backtick → 11/11. |
 | `HOW_TO_CREATE_ACCDB.md` | Access | Przepis na `Koncerty.accdb` (Windows-only). |
-| `Koncerty.accdb` | Access | Wzorzec `.accdb` (3 tabele + 5 zapisanych kwerend = `accessQueryName`). Wykonany w ACE → wyniki jak w `tests/`. |
+| `Koncerty.accdb` | Access | Wzorzec `.accdb` (3 tabele + 5 zapisanych kwerend = klucze podzadań `task_1` … `task_5`). Wykonany w ACE → wyniki jak w `tests/`. |
 
 ## Mapowanie kwerend (ścieżki upload)
 
